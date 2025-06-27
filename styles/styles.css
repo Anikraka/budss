@@ -1,0 +1,140 @@
+@font-face {
+  font-family: "Outfit-Bold";
+  src: url("../fonts/Outfit-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Outfit-Light";
+  src: url("../fonts/Outfit-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Outfit-Medium";
+  src: url("../fonts/Outfit-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Outfit-Regular";
+  src: url("../fonts/Outfit-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Outfit-SemiBold";
+  src: url("../fonts/Outfit-SemiBold.woff2") format("woff2");
+}
+:root {
+  --color-grayscale-00: #000000;
+  --color-grayscale-01: #181818;
+  --color-grayscale-02: #444444;
+  --color-grayscale-03: #b9b9b9;
+  --color-grayscale-04: #cfcfcf;
+  --color-grayscale-05: #e4e4e4;
+  --color-grayscale-06: #f5f5f5;
+  --color-grayscale-07: #ffffff;
+  --color-primary-00: #7b31d4;
+  --color-primary-01: #954ced;
+  --color-primary-02: #a64ced;
+  --color-primary-03: #ba8bf3;
+  --color-primary-04: #954ced33;
+  --color-secondary-01: #2fdbbc;
+  --color-secondary-02: #ffaa4c;
+  --color-secondary-03: #c1db2f;
+  --color-additional-01: #ff6c2d;
+  --color-additional-02: #ec1211;
+  --secondary-button-border: 2px solid var(--color-primary-01);
+  --primary-button-border-focus: 4px solid var(--color-primary-03);
+  --secondary-button-border-pressed: 2px solid var(--color-primary-02);
+  --secondary-button-border-disabled: 2px solid var(--color-grayscale-03);
+  --input-border: 1px solid #f1f1f1;
+  --input-border-focus: 1px solid #a7a7a7;
+  --input-border-error: 1px solid var(--color-additional-02);
+  --button-border-radius: 16px;
+  --input-border-radius: 14px;
+  --font-family-base: "Outfit";
+  --container-width: 1332px;
+  --container-paddind-x: 16px;
+  --section-padding-y: 50px;
+}
+
+body {
+  max-width: 100%;
+  font-family: "Outfit-Regular";
+  margin: 0 auto;
+}
+
+.header__tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 38px;
+  padding-left: 60px;
+  background-color: var(--color-secondary-02);
+  font-size: 16px;
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 168px;
+  height: 100%;
+  font-family: "Outfit-Medium";
+  font-weight: 500;
+}
+
+.tab-active {
+  border-radius: 20px 20px 0 0;
+  color: var(--color-grayscale-07);
+  background-color: var(--color-grayscale-01);
+}
+
+.header__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 60px;
+  background-color: var(--color-grayscale-01);
+}
+
+.header__logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 51.8px;
+  font-size: 37px;
+  color: var(--color-grayscale-07);
+  font-family: "Outfit-Regular";
+  font-weight: 600;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 182px;
+  height: 57px;
+  border-radius: 16px;
+  font-family: "Outfit-SemiBold";
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--color-grayscale-07);
+  background-color: var(--color-primary-01);
+}
+
+.hero__info {
+  background-color: var(--color-grayscale-01);
+}
+
+.hero__title {
+  font-family: "Outfit-Bold";
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 106%;
+  color: var(--color-grayscale-07);
+}
+
+.hero__description {
+  font-family: "Outfit-regular";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--color-grayscale-07);
+}/*# sourceMappingURL=styles.css.map */

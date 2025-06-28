@@ -133,7 +133,7 @@ body {
   justify-content: center;
 }
 
-.hero__title {
+.title {
   font-family: "Outfit-Bold";
   font-weight: 700;
   font-size: 96px;
@@ -164,4 +164,60 @@ body {
 .hero__images-background {
   width: 711px;
   height: 333px;
+}
+
+.about {
+  background-color: var(--color-grayscale-01);
+}
+
+.about__info {
+  color: var(--color-grayscale-07);
+}
+
+.about__description {
+  display: flex;
+  flex-direction: column;
+  font-family: "Outfit-SemiBold";
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 100%;
+}
+
+.underline {
+  position: relative;
+}
+
+.underline__image {
+  position: absolute;
+}
+
+.about__images {
+  display: flex;
+  flex-direction: column;
+}
+
+.advantages__list {
+  list-style-type: none;
+}
+
+.about__images {
+  position: relative;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.about__images-orange {
+  position: absolute;
+  width: 420px;
+  height: 257px;
+}
+
+.about__images-purple {
+  position: absolute;
+  width: 406px;
+  height: 256px;
+}
+
+.about__advantages {
+  display: flex;
 }/*# sourceMappingURL=styles.css.map */

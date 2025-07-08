@@ -1,41 +1,38 @@
 body {
   max-width: 100%;
-  font-family: "Outfit-Regular";
+  font-family: "Outfit";
   margin: 0 auto;
+  background-color: var(--color-grayscale-01);
 }
 
-.header__tabs {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 38px;
-  padding-left: 60px;
+.header-top {
   background-color: var(--color-secondary-02);
+}
+
+.header-top__inner {
+  display: flex;
+  align-items: center;
   font-size: 16px;
+}
+
+.header-bottom__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 7px;
 }
 
 .tab {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 168px;
-  height: 100%;
-  font-family: "Outfit-Medium";
+  padding: 9px 40px;
   font-weight: 500;
 }
 
 .tab-active {
   border-radius: 20px 20px 0 0;
   color: var(--color-grayscale-07);
-  background-color: var(--color-grayscale-01);
-}
-
-.header__content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 7px 60px;
   background-color: var(--color-grayscale-01);
 }
 
@@ -47,7 +44,6 @@ body {
   height: 51.8px;
   font-size: 37px;
   color: var(--color-grayscale-07);
-  font-family: "Outfit-Regular";
   font-weight: 600;
 }
 
@@ -55,21 +51,36 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
   width: 182px;
   height: 57px;
+  border: 0;
   border-radius: 16px;
-  font-family: "Outfit-SemiBold";
   font-weight: 600;
   font-size: 20px;
   color: var(--color-grayscale-07);
   background-color: var(--color-primary-01);
 }
 
+button:hover {
+  background-color: var(--color-grayscale-01);
+  border: var(--secondary-button-border);
+}
+
+button:focus {
+  border: var(--primary-button-border-focus);
+}
+
+button:active {
+  background-color: var(--color-primary-00);
+}
+
 .hero {
   display: flex;
   flex-direction: row;
   height: 662px;
-  padding: 0 60px;
+  padding: 0 0 0 110px;
+  gap: 64px;
   background-color: var(--color-grayscale-01);
 }
 
@@ -77,19 +88,19 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 671px;
+  width: 100%;
 }
 
 .title {
-  font-family: "Outfit-Bold";
   font-weight: 700;
   font-size: 96px;
   line-height: 106%;
-  margin: 0;
+  margin-bottom: 20px;
   color: var(--color-grayscale-07);
 }
 
 .hero__description {
-  font-family: "Outfit-regular";
   font-weight: 400;
   font-size: 20px;
   line-height: 120%;
@@ -97,33 +108,41 @@ body {
   color: var(--color-grayscale-07);
 }
 
-.hero__images {
+.hero__image {
   position: relative;
+  overflow: hidden;
+  width: 845px;
+  height: 529px;
 }
 
-.hero__images-woman {
+.hero__image-woman {
   position: absolute;
-  width: 489px;
-  height: 610px;
-}
-
-.hero__images-background {
-  width: 711px;
-  height: 333px;
+  top: 72%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  width: 845px;
+  height: 529px;
+  object-fit: contain;
 }
 
 .about {
   background-color: var(--color-grayscale-01);
 }
 
+.about__title-first {
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
+
 .about__info {
+  display: flex;
+  flex-direction: row;
   color: var(--color-grayscale-07);
 }
 
 .about__description {
   display: flex;
   flex-direction: column;
-  font-family: "Outfit-SemiBold";
   font-weight: 600;
   font-size: 36px;
   line-height: 100%;
@@ -137,31 +156,22 @@ body {
   position: absolute;
 }
 
-.about__images {
-  display: flex;
-  flex-direction: column;
-}
-
 .advantages__list {
   list-style-type: none;
 }
 
-.about__images {
+.about__image {
   position: relative;
   opacity: 0.7;
   z-index: 1;
+  top: -67px;
+  left: -165px;
 }
 
-.about__images-orange {
+.about__image-lines {
   position: absolute;
-  width: 420px;
-  height: 257px;
-}
-
-.about__images-purple {
-  position: absolute;
-  width: 406px;
-  height: 256px;
+  width: 721px;
+  height: 621px;
 }
 
 .advantages__list {

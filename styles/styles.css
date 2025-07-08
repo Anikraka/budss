@@ -1,22 +1,217 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+}
+
+/**
+  Плавный скролл
+ */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not([fill=none], [fill^=url])) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not([stroke=none], [stroke^=url])) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 @font-face {
-  font-family: "Outfit-Bold";
+  font-family: "Outfit";
   src: url("../fonts/Outfit-Bold.woff2") format("woff2");
+  font-weight: 700;
 }
 @font-face {
-  font-family: "Outfit-Light";
+  font-family: "Outfit";
   src: url("../fonts/Outfit-Light.woff2") format("woff2");
+  font-weight: 300;
 }
 @font-face {
-  font-family: "Outfit-Medium";
+  font-family: "Outfit";
   src: url("../fonts/Outfit-Medium.woff2") format("woff2");
+  font-weight: 500;
 }
 @font-face {
-  font-family: "Outfit-Regular";
+  font-family: "Outfit";
   src: url("../fonts/Outfit-Regular.woff2") format("woff2");
+  font-weight: 400;
 }
 @font-face {
-  font-family: "Outfit-SemiBold";
+  font-family: "Outfit";
   src: url("../fonts/Outfit-SemiBold.woff2") format("woff2");
+  font-weight: 600;
 }
 :root {
   --color-grayscale-00: #000000;
@@ -47,49 +242,52 @@
   --button-border-radius: 16px;
   --input-border-radius: 14px;
   --font-family-base: "Outfit";
-  --container-width: 1332px;
-  --container-paddind-x: 16px;
+  --container-width: 1320px;
+  --container-padding-x: 60px;
   --section-padding-y: 50px;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  padding-inline: var(--container-padding-x);
+  margin-inline: auto;
 }
 
 body {
   max-width: 100%;
-  font-family: "Outfit-Regular";
+  font-family: "Outfit";
   margin: 0 auto;
+  background-color: var(--color-grayscale-01);
 }
 
-.header__tabs {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 38px;
-  padding-left: 60px;
+.header-top {
   background-color: var(--color-secondary-02);
+}
+
+.header-top__inner {
+  display: flex;
+  align-items: center;
   font-size: 16px;
+}
+
+.header-bottom__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 7px;
 }
 
 .tab {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 168px;
-  height: 100%;
-  font-family: "Outfit-Medium";
+  padding: 9px 40px;
   font-weight: 500;
 }
 
 .tab-active {
   border-radius: 20px 20px 0 0;
   color: var(--color-grayscale-07);
-  background-color: var(--color-grayscale-01);
-}
-
-.header__content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 7px 60px;
   background-color: var(--color-grayscale-01);
 }
 
@@ -101,7 +299,6 @@ body {
   height: 51.8px;
   font-size: 37px;
   color: var(--color-grayscale-07);
-  font-family: "Outfit-Regular";
   font-weight: 600;
 }
 
@@ -109,21 +306,36 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
   width: 182px;
   height: 57px;
+  border: 0;
   border-radius: 16px;
-  font-family: "Outfit-SemiBold";
   font-weight: 600;
   font-size: 20px;
   color: var(--color-grayscale-07);
   background-color: var(--color-primary-01);
 }
 
+button:hover {
+  background-color: var(--color-grayscale-01);
+  border: var(--secondary-button-border);
+}
+
+button:focus {
+  border: var(--primary-button-border-focus);
+}
+
+button:active {
+  background-color: var(--color-primary-00);
+}
+
 .hero {
   display: flex;
   flex-direction: row;
   height: 662px;
-  padding: 0 60px;
+  padding: 0 0 0 110px;
+  gap: 64px;
   background-color: var(--color-grayscale-01);
 }
 
@@ -131,19 +343,19 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 671px;
+  width: 100%;
 }
 
 .title {
-  font-family: "Outfit-Bold";
   font-weight: 700;
   font-size: 96px;
   line-height: 106%;
-  margin: 0;
+  margin-bottom: 20px;
   color: var(--color-grayscale-07);
 }
 
 .hero__description {
-  font-family: "Outfit-regular";
   font-weight: 400;
   font-size: 20px;
   line-height: 120%;
@@ -151,33 +363,42 @@ body {
   color: var(--color-grayscale-07);
 }
 
-.hero__images {
+.hero__image {
   position: relative;
+  overflow: hidden;
+  width: 845px;
+  height: 529px;
 }
 
-.hero__images-woman {
+.hero__image-woman {
   position: absolute;
-  width: 489px;
-  height: 610px;
-}
-
-.hero__images-background {
-  width: 711px;
-  height: 333px;
+  top: 72%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  width: 845px;
+  height: 529px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .about {
   background-color: var(--color-grayscale-01);
 }
 
+.about__title-first {
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
+
 .about__info {
+  display: flex;
+  flex-direction: row;
   color: var(--color-grayscale-07);
 }
 
 .about__description {
   display: flex;
   flex-direction: column;
-  font-family: "Outfit-SemiBold";
   font-weight: 600;
   font-size: 36px;
   line-height: 100%;
@@ -191,33 +412,29 @@ body {
   position: absolute;
 }
 
-.about__images {
-  display: flex;
-  flex-direction: column;
-}
-
 .advantages__list {
   list-style-type: none;
 }
 
-.about__images {
+.about__image {
   position: relative;
   opacity: 0.7;
   z-index: 1;
+  top: -67px;
+  left: -165px;
 }
 
-.about__images-orange {
+.about__image-lines {
   position: absolute;
-  width: 420px;
-  height: 257px;
+  width: 721px;
+  height: 621px;
 }
 
-.about__images-purple {
-  position: absolute;
-  width: 406px;
-  height: 256px;
-}
-
-.about__advantages {
+.advantages__list {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.advantages__item {
+  width: 50%;
 }/*# sourceMappingURL=styles.css.map */
